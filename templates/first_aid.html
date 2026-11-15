@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}First Aid Guide{% endblock %}
+{% block content %}
+<h2 class="mb-3">First Aid Guide</h2>
+<div class="mb-3">
+  <a class="chip {{ 'active' if not active }}" href="/first-aid">All</a>
+  {% for c in categories %}<a class="chip {{ 'active' if active==c }}" href="/first-aid?category={{ c }}">{{ c }}</a>{% endfor %}
+</div>
+<div class="row g-3">
+  {% for g in guides %}
+  <div class="col-md-6 col-lg-4">
+    <a class="card-lite" href="/first-aid/{{ g.slug }}">
+      <div class="tag">{{ g.category }}</div><h5>{{ g.name }}</h5><div class="muted">{{ g.summary }}</div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

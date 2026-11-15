@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Search{% endblock %}
+{% block content %}
+<h2 class="mb-3">Search first aid</h2>
+<form class="mb-4" style="max-width:520px"><div class="input-group">
+  <input name="q" value="{{ q }}" class="form-control" placeholder="e.g. snake bite" autofocus><button class="btn btn-dark">Search</button></div></form>
+{% if q %}
+  {% if results %}
+  <div class="row g-3">{% for g in results %}
+    <div class="col-md-6 col-lg-4"><a class="card-lite" href="/first-aid/{{ g.slug }}"><div class="tag">{{ g.category }}</div><h5>{{ g.name }}</h5><div class="muted">{{ g.summary }}</div></a></div>
+  {% endfor %}</div>
+  {% else %}
+  <p>No match for "{{ q }}". <a href="/first-aid">Browse all guides</a> or <a href="/emergency">use the Emergency Assistant</a>. If it is urgent, call <a href="tel:112">112</a>.</p>
+  {% endif %}
+{% endif %}
+{% endblock %}

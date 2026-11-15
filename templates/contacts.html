@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Emergency Contacts{% endblock %}
+{% block content %}
+<h2 class="mb-3">Emergency Contacts (India)</h2>
+<a href="tel:112" class="btn btn-emergency btn-lg mb-4">CALL EMERGENCY SERVICES (112)</a>
+<div class="table-responsive"><table class="table bg-white align-middle">
+  <thead><tr><th>Service</th><th>Number</th><th>Details</th></tr></thead>
+  <tbody>{% for n, num, d in contacts %}
+    <tr><td>{{ n }}</td><td><a href="tel:{{ num }}" class="fw-bold text-danger text-decoration-none">{{ num }}</a></td><td class="muted">{{ d }}</td></tr>
+  {% endfor %}</tbody></table></div>
+<p class="muted small">112 is India's unified emergency number. Availability of other numbers varies by state.</p>
+{% endblock %}

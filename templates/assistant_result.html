@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Emergency Assistant{% endblock %}
+{% block content %}
+<div style="max-width:720px" class="mx-auto">
+{% if g %}
+  <div class="alert alert-danger"><strong>Call <a href="tel:112" class="alert-link">112</a> now if:</strong> {{ g.call_when }}</div>
+  <div class="tag">Suggested guide</div>
+  <h2>{{ g.name }}</h2>
+  <ol class="steps">{% for s in g.steps %}<li>{{ s }}</li>{% endfor %}</ol>
+  <div class="card-lite mb-3"><h6>Avoid</h6><ul class="avoid mb-0">{% for s in g.avoid %}<li>{{ s }}</li>{% endfor %}</ul></div>
+  <a class="btn btn-outline-dark" href="/first-aid/{{ g.slug }}">Full guide</a>
+{% else %}
+  <div class="alert alert-danger"><strong>Not sure? Call <a href="tel:112" class="alert-link">112</a>.</strong> Stay with the person, keep them calm and still, and follow the dispatcher's instructions.</div>
+  <a class="btn btn-outline-dark" href="/first-aid">Browse first aid guides</a>
+{% endif %}
+  <a class="btn btn-link" href="/emergency">Start over</a>
+</div>
+{% endblock %}

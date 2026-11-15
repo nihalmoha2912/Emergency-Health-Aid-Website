@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Emergency Assistant{% endblock %}
+{% block content %}
+<div style="max-width:640px" class="mx-auto">
+  <div class="alert alert-danger">If the person is in immediate danger, call <a href="tel:112" class="alert-link">112</a> first, then use this guide.</div>
+  <h2 class="mb-3">{{ node.q }}</h2>
+  {% for label, nxt in node.options %}
+    <a class="option-btn" href="/emergency?n={{ nxt }}">{{ label }}</a>
+  {% endfor %}
+  <a href="/emergency" class="muted small">Start over</a>
+</div>
+{% endblock %}

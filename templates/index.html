@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero text-center">
+  <h1>Emergency Health Aid</h1>
+  <p class="lead muted">Immediate access to essential first-aid information when every second matters.</p>
+  <div class="d-flex flex-wrap gap-2 justify-content-center my-4">
+    <a href="/emergency" class="btn btn-emergency btn-lg">Emergency Assistance</a>
+    <a href="tel:112" class="btn btn-outline-danger btn-lg">Call 112</a>
+  </div>
+  <form action="/search" class="mx-auto" style="max-width:520px">
+    <div class="input-group input-group-lg">
+      <input name="q" class="form-control" placeholder="Search: snake bite, burns, choking..." aria-label="Search first aid">
+      <button class="btn btn-dark">Search</button>
+    </div>
+  </form>
+</section>
+
+<div class="row g-3 my-3">
+  <div class="col-6 col-md-3"><a class="card-lite" href="/first-aid"><div class="tag">Guide</div><strong>First Aid Guide</strong></a></div>
+  <div class="col-6 col-md-3"><a class="card-lite" href="/emergency"><div class="tag">Interactive</div><strong>Emergency Assistant</strong></a></div>
+  <div class="col-6 col-md-3"><a class="card-lite" href="/hospitals"><div class="tag">Map</div><strong>Find Nearby Hospitals</strong></a></div>
+  <div class="col-6 col-md-3"><a class="card-lite" href="/contacts"><div class="tag">Numbers</div><strong>Emergency Contacts</strong></a></div>
+</div>
+
+<h4 class="mt-5 mb-3">Common emergencies</h4>
+<div class="row g-3">
+  {% for g in guides %}
+  <div class="col-6 col-md-4 col-lg-3">
+    <a class="card-lite" href="/first-aid/{{ g.slug }}"><div class="tag">{{ g.category }}</div><strong>{{ g.name }}</strong></a>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

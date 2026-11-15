@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Nearby Hospitals{% endblock %}
+{% block head %}<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">{% endblock %}
+{% block content %}
+<h2 class="mb-2">Nearby Hospitals</h2>
+<p class="muted">Allow location access to see hospitals within 5 km. Map listings do not confirm that an emergency department is open or available. Call ahead or dial <a href="tel:108">108</a>.</p>
+<div class="mb-3"><button id="locate" class="btn btn-dark">Use my location</button> <span id="status" class="muted ms-2"></span></div>
+<div id="map"></div>
+<div id="list" class="row g-3 mt-2"></div>
+{% endblock %}
+{% block scripts %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}
